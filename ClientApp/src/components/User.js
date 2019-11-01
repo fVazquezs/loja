@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
 
-export class FetchData extends Component {
-  displayName = FetchData.name
+export class User extends Component {
+  displayName = User.name
 
   constructor(props) {
     super(props);
