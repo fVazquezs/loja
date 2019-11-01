@@ -6,29 +6,27 @@ export class FetchData extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { forecasts: [], loading: true };
+    this.state = { users: [], loading: true };
 
-      Axios.get('api/Users')
+    Axios.get('api/Users').then(res => {
+      this.setState({ users: res.data, loading: false })
+    })
   }
 
-  static renderForecastsTable(forecasts) {
+  renderUsersTable(users) {
     return (
       <table className='table'>
         <thead>
           <tr>
-            <th>Date</th>
-            <th>Temp. (C)</th>
-            <th>Temp. (F)</th>
-            <th>Summary</th>
+            <th>Id</th>
+            <th>Name</th>
           </tr>
         </thead>
         <tbody>
-          {forecasts.map(forecast =>
-            <tr key={forecast.dateFormatted}>
-              <td>{forecast.dateFormatted}</td>
-              <td>{forecast.temperatureC}</td>
-              <td>{forecast.temperatureF}</td>
-              <td>{forecast.summary}</td>
+          {users.map((user) =>
+            <tr key={user.id}>
+              <td>{user.id}</td>
+              <td>{user.name}</td>
             </tr>
           )}
         </tbody>
@@ -39,12 +37,11 @@ export class FetchData extends Component {
   render() {
     let contents = this.state.loading
       ? <p><em>Loading...</em></p>
-      : FetchData.renderForecastsTable(this.state.forecasts);
+      : this.renderUsersTable(this.state.users);
 
     return (
       <div>
-        <h1>Weather forecast</h1>
-        <p>This component demonstrates fetching data from the server.</p>
+        <h1>Users</h1>
         {contents}
       </div>
     );
