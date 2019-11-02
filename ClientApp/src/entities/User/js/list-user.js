@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import Axios from 'axios';
 import { Button } from "react-bootstrap";
 
-import "../css/User.css";
+import "../css/list-user.css";
 
 export class User extends Component {
   displayName = User.name
