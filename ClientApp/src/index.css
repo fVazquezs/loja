@@ -9,4 +9,6 @@ input{
     border-radius: 10px;
     border: 1px solid gray;
     height: 35px;
+    padding: 8px;
+    font-size: 15px;
 }

@@ -8,7 +8,6 @@ export class DeleteUser extends React.Component {
 
     constructor(props) {
         super(props);
-        window.location.href;
         this.userDataSevice = new UserDataService();
         this.state = { id: window.location.href.split('/')[window.location.href.split('/').length - 1], email: '', password: '', cpf: '', name: '', redirectListUsers: false }
     }
@@ -50,12 +49,10 @@ export class DeleteUser extends React.Component {
                         Password:
                         <input disabled className="new-user-form-input" id="new-user-password" type="password" name="password" value={this.state.password} />
                     </label>
-                    <Button variant="primary" type="submit">
-                        Delete
-                    </Button>
-                    <Button variant="primary" onClick={() => this.setState({ redirectListUsers: true })}>
-                        Cancel
-                    </Button>
+                    <div className="delete-user-button">
+                        <Button variant="primary" type="submit">Delete</Button>
+                        <Button className="cancel-delete-user" variant="primary" onClick={() => this.setState({ redirectListUsers: true })}>Cancel</Button>
+                    </div>
                 </form>
             </div>
         )
