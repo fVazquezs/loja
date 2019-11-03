@@ -47,7 +47,7 @@ export class DeleteEmployee extends React.Component {
                     </label>
                     <label className="new-employee-form-label" htmlFor="new-employee-position">
                         Position:
-                        <input className="new-employee-form-input" id="new-employee-position" type="text" name="position" value={this.state.position} />
+                        <input disabled className="new-employee-form-input" id="new-employee-position" type="text" name="position" value={this.state.position} />
                     </label>
                     <label className="new-employee-form-label" htmlFor="new-employee-password">
                         Password:
