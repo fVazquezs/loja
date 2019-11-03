@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Route } from 'react-router';
 import { Layout } from './components/Layout';
 import { Home } from './components/Home';
-import { User, CreateUser, EditUser, DeleteUser } from './entities/User/js';
+import { Employee, CreateEmployee, EditEmployee, DeleteEmployee } from './entities/Employee/js';
 import { Counter } from './components/Counter';
 
 export default class App extends Component {
@@ -13,10 +13,10 @@ export default class App extends Component {
       <Layout>
         <Route exact path='/' component={Home} />
         <Route path='/counter' component={Counter} />
-        <Route exact path='/users' component={User} />
-        <Route exact path='/users/new' component={CreateUser} />
-        <Route exact path='/users/edit/:id' component={EditUser} />
-        <Route exact path='/users/delete/:id' component={DeleteUser} />
+        <Route exact path='/employees' component={Employee} />
+        <Route exact path='/employees/new' component={CreateEmployee} />
+        <Route exact path='/employees/edit/:id' component={EditEmployee} />
+        <Route exact path='/employees/delete/:id' component={DeleteEmployee} />
       </Layout>
     );
   }

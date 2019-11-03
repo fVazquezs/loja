@@ -1,0 +1,15 @@
+.new-employee-form-label{
+    width: 100%;
+}
+
+.new-employee-form-input{
+    width: 100%;
+}
+
+.create-employee-button{
+    margin-top: 20px;
+}
+
+.cancel-create-employee{
+    margin-left: 20px;
+}
