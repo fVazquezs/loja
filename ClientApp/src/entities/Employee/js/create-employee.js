@@ -14,7 +14,7 @@ export class CreateEmployee extends React.Component {
 
     createEmployee = async (e) => {
         e.preventDefault();
-        const response = await this.employeeDataSevice.create({ name: this.state.name, email: this.state.email, cpf: this.state.cpf, position: this.state.position, password: this.state.password });
+        const response = await this.employeeDataSevice.create({ name: this.state.name, email: this.state.email, cpf: this.state.cpf, position: this.state.position, password: this.state.password, startDate: new Date() });
         if (response.status === 201) {
             this.setState({ redirectListEmployees: true })
         }
