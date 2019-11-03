@@ -44,9 +44,10 @@ export class CreateUser extends React.Component {
                         Password:
                         <input className="new-user-form-input" id="new-user-password" type="password" name="password" onChange={(e) => this.setState({ password: e.target.value })} />
                     </label>
-                    <Button variant="primary" type="submit">
-                        Submit
-                    </Button>
+                    <div className="create-user-button">
+                        <Button variant="primary" type="submit">Submit</Button>
+                        <Button className="cancel-create-user" variant="primary" onClick={() => this.setState({ redirectListUsers: true })}>Cancel</Button>
+                    </div>
                 </form>
             </div>
         )

@@ -8,7 +8,6 @@ export class EditUser extends React.Component {
 
     constructor(props) {
         super(props);
-        window.location.href;
         this.userDataSevice = new UserDataService();
         this.state = { id: window.location.href.split('/')[window.location.href.split('/').length - 1], email: '', password: '', cpf: '', name: '', redirectListUsers: false }
     }
@@ -20,7 +19,7 @@ export class EditUser extends React.Component {
 
     editUser = async (e) => {
         e.preventDefault();
-        const response = await this.userDataSevice.updateUser({id: this.state.id,  name: this.state.name, email: this.state.email, cpf: this.state.cpf, password: this.state.password });
+        const response = await this.userDataSevice.updateUser({ id: this.state.id, name: this.state.name, email: this.state.email, cpf: this.state.cpf, password: this.state.password });
         if (response.status === 204) {
             this.setState({ redirectListUsers: true })
         }
@@ -50,12 +49,10 @@ export class EditUser extends React.Component {
                         Password:
                         <input className="new-user-form-input" id="new-user-password" type="password" name="password" value={this.state.password} onChange={(e) => this.setState({ password: e.target.value })} />
                     </label>
-                    <Button variant="primary" type="submit">
-                        Submit
-                    </Button>
-                    <Button variant="primary" onClick={() => this.setState({ redirectListUsers: true })}>
-                        Cancel
-                    </Button>
+                    <div className="edit-user-button">
+                        <Button variant="primary" type="submit">Submit</Button>
+                        <Button className="cancel-edit-user" variant="primary" onClick={() => this.setState({ redirectListUsers: true })}>Cancel</Button>
+                    </div>
                 </form>
             </div>
         )
