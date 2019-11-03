@@ -4,9 +4,7 @@ import { NavMenu } from './NavMenu';
 
 export class Layout extends Component {
   displayName = Layout.name
-  componentDidMount() {
-    console.log(this.props)
-  }
+  
   render() {
     return (
       <Grid fluid>
