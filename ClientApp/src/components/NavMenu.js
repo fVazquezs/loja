@@ -23,14 +23,14 @@ export class NavMenu extends Component {
                 <Glyphicon glyph='home' /> Home
               </NavItem>
             </LinkContainer>
-            <LinkContainer to={'/counter'}>
-              <NavItem>
-                <Glyphicon glyph='education' /> Counter
-              </NavItem>
-            </LinkContainer>
             <LinkContainer to={'/employees'}>
               <NavItem>
-                <Glyphicon glyph='th-list' /> Employees
+                <Glyphicon glyph='user' /> Employees
+              </NavItem>
+            </LinkContainer>
+            <LinkContainer to={'/categories'}>
+              <NavItem>
+                <Glyphicon glyph='th-list' /> Categories
               </NavItem>
             </LinkContainer>
           </Nav>

@@ -5,8 +5,8 @@ import { Button } from "react-bootstrap";
 
 import "../css/list-employee.css";
 
-export class Employee extends Component {
-  displayName = Employee.name
+export class ListEmployee extends Component {
+  displayName = ListEmployee.name
 
   constructor(props) {
     super(props);
