@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { Route } from 'react-router';
 import { Layout } from './components/Layout';
 import { Home } from './components/Home';
-import { Employee, CreateEmployee, EditEmployee, DeleteEmployee } from './entities/Employee/js';
-import { Counter } from './components/Counter';
+import { ListEmployee, CreateEmployee, EditEmployee, DeleteEmployee } from './entities/Employee/js';
+import { ListCategory, CreateCategory, EditCategory, DeleteCategory } from './entities/Category/js';
 
 export default class App extends Component {
   displayName = App.name
@@ -12,11 +12,18 @@ export default class App extends Component {
     return (
       <Layout>
         <Route exact path='/' component={Home} />
-        <Route path='/counter' component={Counter} />
-        <Route exact path='/employees' component={Employee} />
+
+        {/* Employee */}
+        <Route exact path='/employees' component={ListEmployee} />
         <Route exact path='/employees/new' component={CreateEmployee} />
         <Route exact path='/employees/edit/:id' component={EditEmployee} />
         <Route exact path='/employees/delete/:id' component={DeleteEmployee} />
+
+        {/* Category */}
+        <Route exact path='/categories' component={ListCategory} />
+        <Route exact path='/categories/new' component={CreateCategory} />
+        <Route exact path='/categories/edit/:id' component={EditCategory} />
+        <Route exact path='/categories/delete/:id' component={DeleteCategory} />
       </Layout>
     );
   }

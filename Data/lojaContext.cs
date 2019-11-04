@@ -17,5 +17,7 @@ namespace loja.Models
         public DbSet<loja.Models.User> User { get; set; }
 
         public DbSet<loja.Models.Employee> Employee { get; set; }
+
+        public DbSet<loja.Models.Category> Category { get; set; }
     }
 }

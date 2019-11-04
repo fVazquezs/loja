@@ -1,0 +1,15 @@
+.new-category-form-label{
+    width: 100%;
+}
+
+.new-category-form-input{
+    width: 100%;
+}
+
+.create-category-button{
+    margin-top: 20px;
+}
+
+.cancel-create-category{
+    margin-left: 20px;
+}
