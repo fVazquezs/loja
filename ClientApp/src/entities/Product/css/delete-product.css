@@ -5,3 +5,7 @@
 .cancel-delete-product{
     margin-left: 20px;
 }
+
+.delete-product-form-label, .delete-product-form-input{
+    width: 100%;
+}

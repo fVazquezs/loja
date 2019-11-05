@@ -9,12 +9,12 @@ export class DeleteProduct extends React.Component {
     constructor(props) {
         super(props);
         this.productDataSevice = new EntityDataService("Products");
-        this.state = { id: window.location.href.split('/')[window.location.href.split('/').length - 1], name: '', redirectListProducts: false }
+        this.state = { id: window.location.href.split('/')[window.location.href.split('/').length - 1], name: '', price: 0, category: '', redirectListProducts: false }
     }
 
     async componentDidMount() {
         const product = await this.productDataSevice.getById(this.state.id);
-        this.setState({ name: product.name, loading: false })
+        this.setState({ name: product.name, price: product.price, category: product.category.name, loading: false })
     }
 
     deleteProduct = async (e) => {
@@ -33,9 +33,17 @@ export class DeleteProduct extends React.Component {
             <div>
                 <h1>Delete Product</h1>
                 <form onSubmit={this.deleteProduct}>
-                    <label className="new-product-form-label" htmlFor="new-product-name">
+                    <label className="delete-product-form-label" htmlFor="delete-product-name">
                         Name:
-                        <input disabled className="new-product-form-input" id="new-product-name" type="text" name="name" value={this.state.name} onChange={(e) => this.setState({ name: e.target.value })} />
+                        <input disabled className="delete-product-form-input" id="delete-product-name" type="text" name="name" value={this.state.name} />
+                    </label>
+                    <label className="delete-product-form-label" htmlFor="delete-product-price">
+                        Price:
+                        <input disabled className="delete-product-form-input" id="delete-product-price" type="text" name="price" value={this.state.price} />
+                    </label>
+                    <label className="delete-product-form-label" htmlFor="delete-product-category">
+                        Category:
+                        <input disabled className="delete-product-form-input" id="delete-product-category" type="text" name="category" value={this.state.category} />
                     </label>
                     <div className="delete-product-button">
                         <Button bsStyle="warning" type="submit">Submit</Button>
