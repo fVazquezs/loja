@@ -1,6 +1,6 @@
 import React from 'react';
 import { Redirect } from 'react-router';
-import { Button } from 'react-bootstrap';
+import { Button, DropdownButton, MenuItem } from 'react-bootstrap';
 import { EntityDataService } from '../../../service/entities-data-service';
 import '../css/create-product.css';
 
@@ -27,7 +27,7 @@ export class CreateProduct extends React.Component {
     }
 
     render() {
-        if(this.state.loading){
+        if (this.state.loading) {
             return <div>loading</div>
         }
         if (this.state.redirectListProducts) {
@@ -47,11 +47,13 @@ export class CreateProduct extends React.Component {
                     </label>
                     <label className="new-product-form-label" htmlFor="new-product-category">
                         Category:
-                        <select id="new-product-category" onChange={(e) => this.setState({ CategoryId: e.target.value })} name="categpry">
-                            {this.state.categories.map(cat => {
-                                return <option key={cat.id} value={cat.id}>{cat.name}</option>
-                            })}
-                        </select>
+                        <div className="new-product-form-dropdown">
+                            <select className="new-product-form-select" id="new-product-category" onChange={(e) => this.setState({ CategoryId: e.target.value })} name="category">
+                                {this.state.categories.map(cat => {
+                                    return <option key={cat.id} value={cat.id}>{cat.name}</option>
+                                })}
+                            </select>
+                        </div>
                     </label>
                     <div className="create-product-button">
                         <Button bsStyle="primary" type="submit">Submit</Button>

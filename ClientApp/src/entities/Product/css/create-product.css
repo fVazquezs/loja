@@ -1,8 +1,4 @@
-.new-product-form-label{
-    width: 100%;
-}
-
-.new-product-form-input{
+.new-product-form-label, .new-product-form-input{
     width: 100%;
 }
 
@@ -12,4 +8,13 @@
 
 .cancel-create-product{
     margin-left: 20px;
+}
+
+.new-product-form-select {
+    width: 300px;
+    border-radius: 10px;
+    border: 1px solid gray;
+    height: 35px;
+    padding: 8px;
+    font-size: 15px;
 }
