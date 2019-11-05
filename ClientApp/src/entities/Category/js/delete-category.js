@@ -38,8 +38,8 @@ export class DeleteCategory extends React.Component {
                         <input disabled className="new-category-form-input" id="new-category-name" type="text" name="name" value={this.state.name} onChange={(e) => this.setState({ name: e.target.value })} />
                     </label>
                     <div className="delete-category-button">
-                        <Button variant="primary" type="submit">Submit</Button>
-                        <Button className="cancel-delete-category" variant="primary" onClick={() => this.setState({ redirectListCategories: true })}>Cancel</Button>
+                        <Button bsStyle="warning" type="submit">Submit</Button>
+                        <Button className="cancel-delete-category" bsStyle="danger" onClick={() => this.setState({ redirectListCategories: true })}>Cancel</Button>
                     </div>
                 </form>
             </div>

@@ -42,7 +42,7 @@ export class ListEmployee extends Component {
               <td>{employee.position}</td>
               <td>{employee.cpf}</td>
               <td><Link to={`/employees/edit/${employee.id}`}><Button>Edit</Button></Link></td>
-              <td><Link to={`/employees/delete/${employee.id}`}><Button>Delete</Button></Link></td>
+              <td><Link to={`/employees/delete/${employee.id}`}><Button bsStyle="danger">Delete</Button></Link></td>
             </tr>
           )}
         </tbody>
@@ -58,7 +58,7 @@ export class ListEmployee extends Component {
     return (
       <div>
         <h1>Employees</h1>
-        <Link to='/employees/new'><Button variant="outline-primary" className="new-employee-button" >Add New</Button></Link>
+        <Link to='/employees/new'><Button bsStyle="info" className="new-employee-button" >Add New</Button></Link>
         {contents}
       </div>
     );

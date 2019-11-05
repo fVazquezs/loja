@@ -33,8 +33,8 @@ export class CreateCategory extends React.Component {
                         <input className="new-category-form-input" id="new-category-name" type="text" name="name" onChange={(e) => this.setState({ name: e.target.value })} />
                     </label>
                     <div className="create-category-button">
-                        <Button variant="primary" type="submit">Submit</Button>
-                        <Button className="cancel-create-category" variant="primary" onClick={() => this.setState({ redirectListCategories: true })}>Cancel</Button>
+                        <Button bsStyle="primary" type="submit">Submit</Button>
+                        <Button className="cancel-create-category" bsStyle="danger" onClick={() => this.setState({ redirectListCategories: true })}>Cancel</Button>
                     </div>
                 </form>
             </div>

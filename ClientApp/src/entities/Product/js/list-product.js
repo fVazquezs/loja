@@ -40,7 +40,7 @@ export class ListProduct extends Component {
               <td>{product.price}</td>
               <td>{product.category.name}</td>
               <td><Link to={`/products/edit/${product.id}`}><Button>Edit</Button></Link></td>
-              <td><Link to={`/products/delete/${product.id}`}><Button>Delete</Button></Link></td>
+              <td><Link to={`/products/delete/${product.id}`}><Button bsStyle="danger">Delete</Button></Link></td>
             </tr>
           )}
         </tbody>
@@ -56,7 +56,7 @@ export class ListProduct extends Component {
     return (
       <div>
         <h1>Products</h1>
-        <Link to='/products/new'><Button variant="outline-primary" className="new-product-button" >Add New</Button></Link>
+        <Link to='/products/new'><Button bsStyle="info" className="new-product-button" >Add New</Button></Link>
         {contents}
       </div>
     );

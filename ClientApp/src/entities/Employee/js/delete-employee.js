@@ -54,8 +54,8 @@ export class DeleteEmployee extends React.Component {
                         <input disabled className="new-employee-form-input" id="new-employee-password" type="password" name="password" value={this.state.password} />
                     </label>
                     <div className="delete-employee-button">
-                        <Button variant="primary" type="submit">Delete</Button>
-                        <Button className="cancel-delete-employee" variant="primary" onClick={() => this.setState({ redirectListEmployees: true })}>Cancel</Button>
+                        <Button bsStyle="warning" type="submit">Delete</Button>
+                        <Button className="cancel-delete-employee" bsStyle="danger" onClick={() => this.setState({ redirectListEmployees: true })}>Cancel</Button>
                     </div>
                 </form>
             </div>

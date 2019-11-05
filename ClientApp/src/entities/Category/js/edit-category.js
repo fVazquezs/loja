@@ -38,8 +38,8 @@ export class EditCategory extends React.Component {
                         <input className="new-category-form-input" id="new-category-name" type="text" name="name" value={this.state.name} onChange={(e) => this.setState({ name: e.target.value })} />
                     </label>
                     <div className="edit-category-button">
-                        <Button variant="primary" type="submit">Submit</Button>
-                        <Button className="cancel-edit-category" variant="primary" onClick={() => this.setState({ redirectListCategories: true })}>Cancel</Button>
+                        <Button bsStyle="primary" type="submit">Submit</Button>
+                        <Button className="cancel-edit-category" bsStyle="danger" onClick={() => this.setState({ redirectListCategories: true })}>Cancel</Button>
                     </div>
                 </form>
             </div>

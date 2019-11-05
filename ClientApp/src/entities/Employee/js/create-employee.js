@@ -49,8 +49,8 @@ export class CreateEmployee extends React.Component {
                         <input className="new-employee-form-input" id="new-employee-password" type="password" name="password" onChange={(e) => this.setState({ password: e.target.value })} />
                     </label>
                     <div className="create-employee-button">
-                        <Button variant="primary" type="submit">Submit</Button>
-                        <Button className="cancel-create-employee" variant="primary" onClick={() => this.setState({ redirectListEmployees: true })}>Cancel</Button>
+                        <Button bsStyle="primary" type="submit">Submit</Button>
+                        <Button className="cancel-create-employee" bsStyle="danger" onClick={() => this.setState({ redirectListEmployees: true })}>Cancel</Button>
                     </div>
                 </form>
             </div>
