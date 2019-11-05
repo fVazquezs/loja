@@ -1,0 +1,15 @@
+.new-product-form-label{
+    width: 100%;
+}
+
+.new-product-form-input{
+    width: 100%;
+}
+
+.create-product-button{
+    margin-top: 20px;
+}
+
+.cancel-create-product{
+    margin-left: 20px;
+}

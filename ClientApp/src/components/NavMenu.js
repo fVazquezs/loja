@@ -33,6 +33,11 @@ export class NavMenu extends Component {
                 <Glyphicon glyph='th-list' /> Categories
               </NavItem>
             </LinkContainer>
+            <LinkContainer to={'/products'}>
+              <NavItem>
+                <Glyphicon glyph='th' /> Products
+              </NavItem>
+            </LinkContainer>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
