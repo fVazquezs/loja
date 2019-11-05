@@ -36,7 +36,7 @@ export class ListCategory extends Component {
               <td>{category.id}</td>
               <td>{category.name}</td>
               <td><Link to={`/categories/edit/${category.id}`}><Button>Edit</Button></Link></td>
-              <td><Link to={`/categories/delete/${category.id}`}><Button>Delete</Button></Link></td>
+              <td><Link to={`/categories/delete/${category.id}`}><Button bsStyle="danger">Delete</Button></Link></td>
             </tr>
           )}
         </tbody>
@@ -52,7 +52,7 @@ export class ListCategory extends Component {
     return (
       <div>
         <h1>Categories</h1>
-        <Link to='/categories/new'><Button variant="outline-primary" className="new-category-button" >Add New</Button></Link>
+        <Link to='/categories/new'><Button bsStyle="info" className="new-category-button" >Add New</Button></Link>
         {contents}
       </div>
     );

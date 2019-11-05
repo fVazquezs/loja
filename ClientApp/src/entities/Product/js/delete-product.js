@@ -38,8 +38,8 @@ export class DeleteProduct extends React.Component {
                         <input disabled className="new-product-form-input" id="new-product-name" type="text" name="name" value={this.state.name} onChange={(e) => this.setState({ name: e.target.value })} />
                     </label>
                     <div className="delete-product-button">
-                        <Button variant="primary" type="submit">Submit</Button>
-                        <Button className="cancel-delete-product" variant="primary" onClick={() => this.setState({ redirectListProducts: true })}>Cancel</Button>
+                        <Button bsStyle="warning" type="submit">Submit</Button>
+                        <Button className="cancel-delete-product" bsStyle="danger" onClick={() => this.setState({ redirectListProducts: true })}>Cancel</Button>
                     </div>
                 </form>
             </div>

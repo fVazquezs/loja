@@ -38,8 +38,8 @@ export class EditProduct extends React.Component {
                         <input className="new-product-form-input" id="new-product-name" type="text" name="name" value={this.state.name} onChange={(e) => this.setState({ name: e.target.value })} />
                     </label>
                     <div className="edit-product-button">
-                        <Button variant="primary" type="submit">Submit</Button>
-                        <Button className="cancel-edit-product" variant="primary" onClick={() => this.setState({ redirectListProducts: true })}>Cancel</Button>
+                        <Button bsStyle="primary" type="submit">Submit</Button>
+                        <Button className="cancel-edit-product" bsStyle="danger" onClick={() => this.setState({ redirectListProducts: true })}>Cancel</Button>
                     </div>
                 </form>
             </div>

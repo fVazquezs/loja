@@ -54,8 +54,8 @@ export class CreateProduct extends React.Component {
                         </select>
                     </label>
                     <div className="create-product-button">
-                        <Button variant="primary" type="submit">Submit</Button>
-                        <Button className="cancel-create-product" variant="primary" onClick={() => this.setState({ redirectListProducts: true })}>Cancel</Button>
+                        <Button bsStyle="primary" type="submit">Submit</Button>
+                        <Button className="cancel-create-product" bsStyle="danger" onClick={() => this.setState({ redirectListProducts: true })}>Cancel</Button>
                     </div>
                 </form>
             </div>
