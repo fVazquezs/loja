@@ -1,11 +1,19 @@
 ﻿import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Glyphicon, Nav, Navbar, NavItem } from 'react-bootstrap';
+import { Button, Glyphicon, Nav, Navbar, NavItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import '../css/NavMenu.css';
 
 export class NavMenu extends Component {
   displayName = NavMenu.name
+
+  renderLogInButton(){
+    if(this.props.logInDataService.isSignedIn()){
+      return <Button>Log Out</Button>
+    } else {
+      return <Link to='/home'><Button>Log In</Button></Link>
+    }
+  }
 
   render() {
     return (
@@ -13,16 +21,12 @@ export class NavMenu extends Component {
         <Navbar.Header>
           <Navbar.Brand>
             <Link to={'/'}>loja</Link>
+            {this.renderLogInButton()}
           </Navbar.Brand>
           <Navbar.Toggle />
         </Navbar.Header>
         <Navbar.Collapse>
           <Nav>
-            <LinkContainer to={'/'} exact>
-              <NavItem>
-                <Glyphicon glyph='home' /> Home
-              </NavItem>
-            </LinkContainer>
             <LinkContainer to={'/employees'}>
               <NavItem>
                 <Glyphicon glyph='user' /> Employees

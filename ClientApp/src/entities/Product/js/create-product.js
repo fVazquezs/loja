@@ -1,6 +1,6 @@
 import React from 'react';
 import { Redirect } from 'react-router';
-import { Button, DropdownButton, MenuItem } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import { EntityDataService } from '../../../service/entities-data-service';
 import '../css/create-product.css';
 
