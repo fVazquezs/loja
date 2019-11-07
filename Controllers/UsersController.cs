@@ -46,6 +46,26 @@ namespace loja.Controllers
             return Ok(user);
         }
 
+        // GET: api/Users/Authenticate
+        [HttpPost("Authenticate")]
+        public async Task<IActionResult> Authenticate([FromBody] User user)
+        {
+            if (!ModelState.IsValid)
+            {
+                return Ok(user);
+            }
+
+            var logged = await _context.User.FirstOrDefaultAsync(u => u.Email == user.Email && u.Password == user.Password);
+
+            if (logged == null)
+            {
+                return NotFound();
+            }
+
+
+            return Ok(logged);
+        }
+
         // PUT: api/Users/5
         [HttpPut("{id}")]
         public async Task<IActionResult> PutUser([FromRoute] int id, [FromBody] User user)

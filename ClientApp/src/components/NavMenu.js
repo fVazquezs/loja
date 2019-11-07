@@ -1,6 +1,6 @@
 ﻿import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Button, Glyphicon, Nav, Navbar, NavItem } from 'react-bootstrap';
+import { Glyphicon, Nav, Navbar, NavItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import '../css/NavMenu.css';
 
@@ -8,11 +8,11 @@ export class NavMenu extends Component {
   displayName = NavMenu.name
 
   renderLogInButton(){
-    if(this.props.logInDataService.isSignedIn()){
-      return <Button>Log Out</Button>
-    } else {
-      return <Link to='/home'><Button>Log In</Button></Link>
-    }
+    // if(this.props.logInDataService.isSignedIn()){
+    //   return <Button>Log Out</Button>
+    // } else {
+    //   return <Link to='/home'><Button>Log In</Button></Link>
+    // }
   }
 
   render() {

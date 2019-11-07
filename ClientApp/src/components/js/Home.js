@@ -10,14 +10,16 @@ export class Home extends Component {
     this.state = { email: '', password: '' };
   }
 
-  onSignInClick = () => {
-    this.props.logInDataService.signIn();
+  logIn = async (e) => {
+    e.preventDefault();
+    await this.props.userLoginDataService.logIn({ email: this.state.email, password: this.state.password })
+    this.props.forceHomeUpdate();
   }
 
   render() {
     return (
       <div>
-        <form onSubmit={this.createProduct}>
+        <form onSubmit={this.logIn}>
           <label className="user-login-form-label" htmlFor="user-login-email">
             Email:
             <input className="user-login-form-input" id="user-login-email" type="text" name="name" onChange={(e) => this.setState({ email: e.target.value })} />
@@ -30,8 +32,6 @@ export class Home extends Component {
             <Button bsStyle="primary" type="submit">Login</Button>
           </div>
         </form>
-
-        <Button bsStyle='danger' onClick={this.onSignInClick}>Log In With Google</Button>
       </div>
     );
   }
