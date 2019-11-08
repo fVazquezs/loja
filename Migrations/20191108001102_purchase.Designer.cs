@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using loja.Models;
 
 namespace loja.Migrations
 {
     [DbContext(typeof(lojaContext))]
-    partial class lojaContextModelSnapshot : ModelSnapshot
+    [Migration("20191108001102_purchase")]
+    partial class purchase
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -56,8 +58,6 @@ namespace loja.Migrations
                     b.Property<int>("PurchaseId");
 
                     b.Property<int>("ProductId");
-
-                    b.Property<int>("Quantity");
 
                     b.HasKey("PurchaseId", "ProductId");
 

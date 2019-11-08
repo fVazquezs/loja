@@ -23,5 +23,15 @@ namespace loja.Models
         public DbSet<loja.Models.Product> Product { get; set; }
 
         public DbSet<loja.Models.Client> Client { get; set; }
+
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<ProductPurchase>()
+                .HasKey(c => new { c.PurchaseId, c.ProductId });
+        }
+
+
+        public DbSet<loja.Models.Purchase> Purchase { get; set; }
     }
 }
