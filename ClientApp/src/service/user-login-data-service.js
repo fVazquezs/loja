@@ -1,32 +1,32 @@
 import Axios from 'axios';
 
 export class UserLoginDataService {
-    constructor(){
+    constructor() {
         this.baseUrl = 'api/Users/Authenticate';
         this.user = null;
     }
 
-    async logIn(body){
+    async logIn(body) {
         const response = await Axios.post(this.baseUrl, body);
-        if(response.status){
+        if (response.status) {
             this.user = response.data;
         }
         return response;
     }
 
-    logOut(){
+    logOut() {
         this.user = null;
     }
 
-    isUserLoggedIn(){
+    isUserLoggedIn() {
         return this.user !== null;
     }
 
-    isUserClient(){
+    isUserClient() {
         return this.user.cep !== undefined;
     }
 
-    isUserEmployee(){
+    isUserEmployee() {
         return this.user.position !== undefined;
     }
 }

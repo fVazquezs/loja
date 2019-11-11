@@ -24,11 +24,24 @@ namespace loja.Models
 
         public DbSet<loja.Models.Client> Client { get; set; }
 
+        public DbSet<loja.Models.Purchase> Purchase { get; set; }
+
+        public DbSet<loja.Models.ProductPurchase> ProductPurchase { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<ProductPurchase>()
                 .HasKey(c => new { c.PurchaseId, c.ProductId });
+
+            modelBuilder.Entity<ProductPurchase>()
+               .HasOne(p => p.Purchase)
+               .WithMany(pp => pp.Product_Purchase)
+               .HasForeignKey(pi => pi.PurchaseId);
+
+            modelBuilder.Entity<ProductPurchase>()
+              .HasOne(p => p.Product)
+              .WithOne()
+              .HasForeignKey<Product>();
         }
 
 
