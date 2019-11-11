@@ -33,5 +33,6 @@ namespace loja.Models
 
 
         public DbSet<loja.Models.Purchase> Purchase { get; set; }
+        public DbSet<loja.Models.ProductPurchase> ProductPurchase{ get; set; }
     }
 }

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using loja.Models;
 
 namespace loja.Migrations
 {
     [DbContext(typeof(lojaContext))]
-    partial class lojaContextModelSnapshot : ModelSnapshot
+    [Migration("20191111224516_jsontest")]
+    partial class jsontest
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -158,7 +160,7 @@ namespace loja.Migrations
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("loja.Models.Purchase")
+                    b.HasOne("loja.Models.Purchase", "Purchase")
                         .WithMany("Product_Purchase")
                         .HasForeignKey("PurchaseId")
                         .OnDelete(DeleteBehavior.Cascade);

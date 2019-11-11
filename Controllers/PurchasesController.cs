@@ -24,7 +24,7 @@ namespace loja.Controllers
         [HttpGet]
         public IEnumerable<Purchase> GetPurchase()
         {
-            return _context.Purchase;
+            return _context.Purchase.Include(p => p.User).Include(p => p.Product_Purchase).ThenInclude(pp => pp.Product).ThenInclude(p => p.Category);
         }
 
         // GET: api/Purchases/5
@@ -92,6 +92,15 @@ namespace loja.Controllers
 
             _context.Purchase.Add(purchase);
             await _context.SaveChangesAsync();
+
+            var products= purchase.Product_Purchase.ToArray();
+
+            foreach (ProductPurchase product in products)
+            {
+                //product.PurchaseId = purchase.Id;
+                _context.ProductPurchase.Add(product);
+            }
+            
 
             return CreatedAtAction("GetPurchase", new { id = purchase.Id }, purchase);
         }

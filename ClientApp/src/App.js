@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Route } from 'react-router';
 import { Layout } from './components/Layout';
 import { Home } from './components/js/Home';
+import { Products } from './components/js/Products';
 import { ListEmployee, CreateEmployee, EditEmployee, DeleteEmployee } from './entities/Employee/js';
 import { ListCategory, CreateCategory, EditCategory, DeleteCategory } from './entities/Category/js';
 import { ListProduct, CreateProduct, EditProduct, DeleteProduct } from './entities/Product/js';
@@ -45,7 +46,7 @@ export default class App extends Component {
         </div>
       )
     } else if (this.userLoginDataService.isUserLoggedIn() && this.userLoginDataService.isUserClient()) {
-      return <Route exact path='/employees' component={ListEmployee} />
+      return <Route exact path='/products' component={Products} />
     }
   }
 
