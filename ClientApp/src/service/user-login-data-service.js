@@ -19,17 +19,14 @@ export class UserLoginDataService {
     }
 
     isUserLoggedIn() {
-        return true;
         return this.user !== null;
     }
 
     isUserClient() {
-        return true;
         return this.user.cep !== undefined;
     }
 
     isUserEmployee() {
-        return false;
-        // return this.user.position !== undefined;
+        return this.user.position !== undefined;
     }
 }
