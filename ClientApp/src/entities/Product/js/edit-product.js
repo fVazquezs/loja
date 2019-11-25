@@ -10,7 +10,7 @@ export class EditProduct extends React.Component {
         super(props);
         this.productDataSevice = new EntityDataService("Products");
         this.categoryDataSevice = new EntityDataService("Categories");
-        this.state = { id: window.location.href.split('/')[window.location.href.split('/').length - 1], name: '', price: 0, category: '', CategoryId: 0, categories: [], redirectListProducts: false }
+        this.state = { id: window.location.href.split('/')[window.location.href.split('/').length - 1], file: null, name: '', price: 0, category: '', CategoryId: 0, categories: [], redirectListProducts: false }
     }
 
     async componentDidMount() {
@@ -19,9 +19,23 @@ export class EditProduct extends React.Component {
         this.setState({ name: product.name, price: product.price, category: product.category.name, CategoryId: product.category.id, categories: categories, loading: false })
     }
 
+    uploadImage = async e => {
+        e.preventDefault();
+
+        let reader = new FileReader();
+        let file = e.target.files[0];
+
+        reader.onloadend = () => {
+            this.setState({
+                file: file,
+            });
+        }
+        reader.readAsDataURL(file)
+    }
+
     editProduct = async (e) => {
         e.preventDefault();
-        const response = await this.productDataSevice.update({ id: this.state.id, name: this.state.name, price: this.state.price, CategoryId: this.state.CategoryId });
+        const response = await this.productDataSevice.update({ id: this.state.id, name: this.state.name, price: this.state.price, CategoryId: this.state.CategoryId }, this.state.file);
         if (response.status === 204) {
             this.setState({ redirectListProducts: true })
         }
@@ -52,6 +66,9 @@ export class EditProduct extends React.Component {
                                 })}
                             </select>
                         </div>
+                    </label>
+                    <label>
+                        <input className="edit-file-chooser" type='file' onChange={this.uploadImage} />
                     </label>
                     <div className="edit-product-button">
                         <Button bsStyle="primary" type="submit">Submit</Button>

@@ -7,7 +7,12 @@ import '../css/NavMenu.css';
 export class NavMenu extends Component {
   displayName = NavMenu.name
 
-  renderLogInButton(){
+  constructor(props) {
+    super(props)
+    this.userService = props.userLoginDataService;
+  }
+
+  renderLogInButton() {
     // if(this.props.logInDataService.isSignedIn()){
     //   return <Button>Log Out</Button>
     // } else {
@@ -45,6 +50,11 @@ export class NavMenu extends Component {
             <LinkContainer to={'/purchases'}>
               <NavItem>
                 <Glyphicon glyph='shopping-cart' /> Purchases
+              </NavItem>
+            </LinkContainer>
+            <LinkContainer to={'/cart'}>
+              <NavItem>
+                <Glyphicon glyph='shopping-cart' /> Cart
               </NavItem>
             </LinkContainer>
           </Nav>

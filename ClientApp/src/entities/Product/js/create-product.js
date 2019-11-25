@@ -10,7 +10,7 @@ export class CreateProduct extends React.Component {
         super(props);
         this.productDataSevice = new EntityDataService("Products");
         this.categoryDataSevice = new EntityDataService("Categories");
-        this.state = { name: '', price: 0, CategoryId: 0, categories: [], redirectListProducts: false, loading: true }
+        this.state = { name: '', price: 0, CategoryId: 0, categories: [], file: null, redirectListProducts: false, loading: true }
     }
 
     async componentDidMount() {
@@ -18,9 +18,23 @@ export class CreateProduct extends React.Component {
         this.setState({ CategoryId: categories[0].id, categories: categories, loading: false })
     }
 
+    uploadImage = async e => {
+        e.preventDefault();
+
+        let reader = new FileReader();
+        let file = e.target.files[0];
+
+        reader.onloadend = () => {
+            this.setState({
+                file: file,
+            });
+        }
+        reader.readAsDataURL(file)
+    }
+
     createProduct = async (e) => {
         e.preventDefault();
-        const response = await this.productDataSevice.create({ name: this.state.name, price: this.state.price, CategoryId: this.state.CategoryId });
+        const response = await this.productDataSevice.create({ name: this.state.name, price: this.state.price, CategoryId: this.state.CategoryId }, this.state.file);
         if (response.status === 201) {
             this.setState({ redirectListProducts: true })
         }
@@ -54,6 +68,9 @@ export class CreateProduct extends React.Component {
                                 })}
                             </select>
                         </div>
+                    </label>
+                    <label>
+                        <input className="new-file-chooser" type='file' onChange={this.uploadImage} />
                     </label>
                     <div className="create-product-button">
                         <Button bsStyle="primary" type="submit">Submit</Button>

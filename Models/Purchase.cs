@@ -19,18 +19,5 @@ namespace loja.Models
         public virtual User User { get; set; }
 
         public ICollection<ProductPurchase> Product_Purchase { get; set; }
-
-    [DataContract(IsReference = true)]
-    public class ProductPurchase
-    {
-        [Key, Column(Order = 0)]
-        public int PurchaseId { get; set; }
-        [ForeignKey("PurchaseId")]
-        public virtual Purchase Purchase { get; set; }
-        [Key, Column(Order = 1)]
-        public int ProductId { get; set; }
-        [ForeignKey("ProductId")]
-        public virtual Product Product { get; set; }
-        public int Quantity { get; set; }
     }
 }

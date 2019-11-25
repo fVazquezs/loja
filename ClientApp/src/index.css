@@ -12,3 +12,7 @@ input{
     padding: 8px;
     font-size: 15px;
 }
+
+html{
+    overflow-x: hidden;
+}

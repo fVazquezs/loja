@@ -3,10 +3,12 @@ import { Route } from 'react-router';
 import { Layout } from './components/Layout';
 import { Home } from './components/js/Home';
 import { Products } from './components/js/Products';
+import { Cart } from './components/js/Cart';
 import { ListEmployee, CreateEmployee, EditEmployee, DeleteEmployee } from './entities/Employee/js';
 import { ListCategory, CreateCategory, EditCategory, DeleteCategory } from './entities/Category/js';
 import { ListProduct, CreateProduct, EditProduct, DeleteProduct } from './entities/Product/js';
 import { UserLoginDataService } from "./service/user-login-data-service";
+import { CartService } from "./service/cart-service.js";
 
 export default class App extends Component {
   displayName = App.name
@@ -14,6 +16,7 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.userLoginDataService = new UserLoginDataService();
+    this.cartService = new CartService();
   }
 
   forceHomeUpdate = () => {
@@ -46,7 +49,12 @@ export default class App extends Component {
         </div>
       )
     } else if (this.userLoginDataService.isUserLoggedIn() && this.userLoginDataService.isUserClient()) {
-      return <Route exact path='/products' component={Products} />
+      return (
+        <div>
+          <Route exact path='/products' render={props => <Products {...props} cartService={this.cartService} />} />
+          <Route exact path='/cart' render={props => <Cart {...props} cartService={this.cartService} />} />
+        </div>
+      )
     }
   }
 
