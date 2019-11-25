@@ -1,3 +1,14 @@
 .user-login-form-label, .user-login-form-input{
     width: 100%;
 }
+
+.cliet-self-register-form{
+    display: grid;
+    grid-template-columns: 100%;
+    text-align: center;
+}
+
+.cliet-self-register-form > label{
+    display: grid;
+    grid-template-columns: 20% 80%;
+}

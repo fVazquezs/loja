@@ -19,6 +19,10 @@ export class CartService {
         })
     }
 
+    removeAll(){
+        this.cart = [];
+    }
+
     totalCartPrice(){
         var price = 0;
         this.cart.map(product => price += product.product.price * product.quantity)

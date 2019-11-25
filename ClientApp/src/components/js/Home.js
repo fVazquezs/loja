@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { Button, Modal } from "react-bootstrap";
 import '../css/Home.css';
+import { EntityDataService } from '../../service/entities-data-service';
 
 export class Home extends Component {
   displayName = Home.name
 
   constructor(props) {
     super(props);
+    this.userDataService = new EntityDataService('Clients')
     this.state = {
       email: '',
       password: '',
@@ -15,7 +17,7 @@ export class Home extends Component {
       newEmail: '',
       newCpf: '',
       newPassword: '',
-      newCep:'',
+      newCep: '',
       newStreet: '',
       newNumber: 0,
       newDistrict: '',
@@ -32,6 +34,25 @@ export class Home extends Component {
     this.props.forceHomeUpdate();
   }
 
+  createUser = async () => {
+    const response = await this.userDataService.create({
+      name: this.state.newName,
+      email: this.state.newEmail,
+      CPF: this.state.newCpf,
+      password: this.state.newPassword,
+      CEP: this.state.newCep,
+      street: this.state.newStreet,
+      number: this.state.newNumber,
+      district: this.state.newDistrict,
+      city: this.state.newCity,
+      state: this.state.newState,
+      complement: this.state.newComplement,
+      birthDate: this.state.newBirthDate
+    })
+    await this.props.userLoginDataService.logIn({ email: response.data.email, password: response.data.password })
+    this.props.forceHomeUpdate();
+  }
+
   renderCreateAccountModal() {
     return (
       <Modal show={this.state.createAccountModal} onHide={() => this.setState({ createAccountModal: false })}>
@@ -39,7 +60,7 @@ export class Home extends Component {
           <Modal.Title>Create Account</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <form onSubmit={this.createProduct}>
+          <form className="cliet-self-register-form" onSubmit={this.createProduct}>
             <label className="new-client-form-label" htmlFor="new-client-name">
               Name:
               <input className="new-client-form-input" id="new-client-name" type="text" name="name" onChange={(e) => this.setState({ newName: e.target.value })} />
@@ -54,7 +75,7 @@ export class Home extends Component {
             </label>
             <label className="new-client-form-label" htmlFor="new-client-password">
               Password:
-              <input className="new-client-form-input" id="new-client-password" type="text" name="password" onChange={(e) => this.setState({ newPassword: e.target.value })} />
+              <input className="new-client-form-input" id="new-client-password" type="password" name="password" onChange={(e) => this.setState({ newPassword: e.target.value })} />
             </label>
             <label className="new-client-form-label" htmlFor="new-client-cep">
               CEP:
@@ -94,6 +115,7 @@ export class Home extends Component {
           <Button onClick={() => this.setState({ createAccountModal: false })}>Close</Button>
           <Button bsStyle="primary" onClick={() => {
             this.setState({ createAccountModal: false })
+            this.createUser();
           }} >Create</Button>
         </Modal.Footer>
       </Modal>
@@ -103,6 +125,7 @@ export class Home extends Component {
   render() {
     return (
       <div>
+        <div className='page-title'><b>Log In</b></div>
         {this.renderCreateAccountModal()}
         <form onSubmit={this.logIn}>
           <label className="user-login-form-label" htmlFor="user-login-email">

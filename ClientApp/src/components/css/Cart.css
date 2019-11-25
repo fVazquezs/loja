@@ -1,3 +1,25 @@
+.page-title{
+    font-size: xx-large;
+}
+
+.total-cart{
+    font-size: x-large;
+    float: right;
+    margin-right: 30px;
+    margin-top: 20px;
+}
+
+.cart-confirm-button{
+    float: right;
+    margin-right: 30px;
+    margin-top: 20px;
+}
+
+.empty-cart{
+    font-size: x-large;
+    margin: 50px auto 0 auto;
+}
+
 .cart-product-list{
     width: 100%;
     display: grid;

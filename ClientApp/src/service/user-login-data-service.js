@@ -14,6 +14,18 @@ export class UserLoginDataService {
         return response;
     }
 
+    updateUser(user){
+        this.user = user;
+    }
+
+    getId() {
+        return this.user.id;
+    }
+
+    getUser() {
+        return this.user;
+    }
+
     logOut() {
         this.user = null;
     }

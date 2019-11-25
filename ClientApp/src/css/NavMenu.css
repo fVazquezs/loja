@@ -1,4 +1,8 @@
-﻿.navbar li .glyphicon {
+﻿.log-button{
+    float: right;
+}
+
+.navbar li .glyphicon {
     margin-right: 10px;
 }
 

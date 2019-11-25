@@ -1,6 +1,6 @@
 ﻿import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Glyphicon, Nav, Navbar, NavItem } from 'react-bootstrap';
+import { Button, Glyphicon, Nav, Navbar, NavItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import '../css/NavMenu.css';
 
@@ -13,14 +13,64 @@ export class NavMenu extends Component {
   }
 
   renderLogInButton() {
-    // if(this.props.logInDataService.isSignedIn()){
-    //   return <Button>Log Out</Button>
-    // } else {
-    //   return <Link to='/home'><Button>Log In</Button></Link>
-    // }
+    if (this.userService.isUserLoggedIn()) {
+      return <Button className='log-button' onClick={() => { this.userService.logOut(); this.props.forceHomeUpdate() }}>Log Out</Button>
+    } else {
+      return <Link to='/home'><Button className='log-button'>Log In</Button></Link>
+    }
   }
 
   render() {
+    let employees, categories, products, purchases, cart, profile;
+
+    if (this.userService.isUserLoggedIn()) {
+      products = (
+        <LinkContainer to={'/products'}>
+          <NavItem>
+            <Glyphicon glyph='th' /> Products
+      </NavItem>
+        </LinkContainer>)
+      if (this.userService.isUserClient()) {
+        cart = (
+          <LinkContainer to={'/cart'}>
+            <NavItem>
+              <Glyphicon glyph='shopping-cart' /> Cart
+              </NavItem>
+          </LinkContainer>
+        );
+        profile = (
+          <LinkContainer to={'/profile'}>
+            <NavItem>
+              <Glyphicon glyph='user' /> Profile
+              </NavItem>
+          </LinkContainer>
+        );
+      }
+      else if (this.userService.isUserEmployee()) {
+        employees = (
+          <LinkContainer to={'/employees'}>
+            <NavItem>
+              <Glyphicon glyph='user' /> Employees
+              </NavItem>
+          </LinkContainer>
+        );
+        categories = (
+          <LinkContainer to={'/categories'}>
+            <NavItem>
+              <Glyphicon glyph='th-list' /> Categories
+              </NavItem>
+          </LinkContainer>
+        );
+        purchases = (
+          <LinkContainer to={'/purchases'}>
+            <NavItem>
+              <Glyphicon glyph='shopping-cart' /> Purchases
+              </NavItem>
+          </LinkContainer>
+        );
+      }
+    }
+
     return (
       <Navbar inverse fixedTop fluid collapseOnSelect>
         <Navbar.Header>
@@ -32,31 +82,12 @@ export class NavMenu extends Component {
         </Navbar.Header>
         <Navbar.Collapse>
           <Nav>
-            <LinkContainer to={'/employees'}>
-              <NavItem>
-                <Glyphicon glyph='user' /> Employees
-              </NavItem>
-            </LinkContainer>
-            <LinkContainer to={'/categories'}>
-              <NavItem>
-                <Glyphicon glyph='th-list' /> Categories
-              </NavItem>
-            </LinkContainer>
-            <LinkContainer to={'/products'}>
-              <NavItem>
-                <Glyphicon glyph='th' /> Products
-              </NavItem>
-            </LinkContainer>
-            <LinkContainer to={'/purchases'}>
-              <NavItem>
-                <Glyphicon glyph='shopping-cart' /> Purchases
-              </NavItem>
-            </LinkContainer>
-            <LinkContainer to={'/cart'}>
-              <NavItem>
-                <Glyphicon glyph='shopping-cart' /> Cart
-              </NavItem>
-            </LinkContainer>
+            {employees}
+            {categories}
+            {purchases}
+            {profile}
+            {products}
+            {cart}
           </Nav>
         </Navbar.Collapse>
       </Navbar>

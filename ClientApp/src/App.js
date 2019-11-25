@@ -9,6 +9,7 @@ import { ListCategory, CreateCategory, EditCategory, DeleteCategory } from './en
 import { ListProduct, CreateProduct, EditProduct, DeleteProduct } from './entities/Product/js';
 import { UserLoginDataService } from "./service/user-login-data-service";
 import { CartService } from "./service/cart-service.js";
+import { Profile } from './components/js/Profile';
 
 export default class App extends Component {
   displayName = App.name
@@ -52,7 +53,8 @@ export default class App extends Component {
       return (
         <div>
           <Route exact path='/products' render={props => <Products {...props} cartService={this.cartService} />} />
-          <Route exact path='/cart' render={props => <Cart {...props} cartService={this.cartService} />} />
+          <Route exact path='/cart' render={props => <Cart {...props} cartService={this.cartService} userLoginDataService={this.userLoginDataService} />} />
+          <Route exact path='/profile' render={props => <Profile {...props} userLoginDataService={this.userLoginDataService} />} />
         </div>
       )
     }
