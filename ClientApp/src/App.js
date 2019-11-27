@@ -10,6 +10,8 @@ import { ListProduct, CreateProduct, EditProduct, DeleteProduct } from './entiti
 import { UserLoginDataService } from "./service/user-login-data-service";
 import { CartService } from "./service/cart-service.js";
 import { Profile } from './components/js/Profile';
+import { Purchases } from './components/js/Purchases';
+import { Purchase } from './components/js/Purchase';
 
 export default class App extends Component {
   displayName = App.name
@@ -47,6 +49,10 @@ export default class App extends Component {
           <Route exact path='/products/new' component={CreateProduct} />
           <Route exact path='/products/edit/:id' component={EditProduct} />
           <Route exact path='/products/delete/:id' component={DeleteProduct} />
+
+          {/* Purchases */}
+          <Route exact path='/purchases' component={Purchases} />
+          <Route exact path='/purchases/details/:id' component={Purchase} />
         </div>
       )
     } else if (this.userLoginDataService.isUserLoggedIn() && this.userLoginDataService.isUserClient()) {

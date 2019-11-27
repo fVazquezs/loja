@@ -36,7 +36,7 @@ namespace loja.Controllers
                 return BadRequest(ModelState);
             }
 
-            var purchase = await _context.Purchase.FindAsync(id);
+            var purchase = await _context.Purchase.Include(p => p.User).Include(p => p.Product_Purchase).ThenInclude(pp => pp.Product).ThenInclude(p => p.Category).FirstOrDefaultAsync(m => m.Id == id);
 
             if (purchase == null)
             {

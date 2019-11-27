@@ -1,0 +1,17 @@
+.purchase-address{
+    display: grid;
+    grid-template-columns: 20% 40% 20% 10%;
+    align-items: center;
+}
+
+.purchase-city-state{
+    display: grid;
+    grid-template-columns: 7% 53% 10% 20%;
+    align-items: center;   
+}
+
+.purchase-cep{
+    display: grid;
+    grid-template-columns: 10% 50% 10% 50%;
+    align-items: center;   
+}
